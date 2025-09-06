@@ -1,0 +1,19 @@
+{
+  "name": "image-generator-pollinations",
+  "version": "1.0.0",
+  "description": "Генератор зображень Pollinations.AI з темним дизайном",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "keywords": ["electron", "image", "generator", "pollinations", "ai", "quilix"],
+  "author": "Quilix",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "electron": "^27.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
