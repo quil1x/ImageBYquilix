@@ -5,15 +5,63 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --dev"
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:portable": "electron-builder --win portable"
   },
-  "keywords": ["electron", "image", "generator", "pollinations", "ai", "quilix"],
+  "keywords": [
+    "electron",
+    "image",
+    "generator",
+    "pollinations",
+    "ai",
+    "quilix"
+  ],
   "author": "Quilix",
   "license": "Apache-2.0",
   "devDependencies": {
-    "electron": "^27.0.0"
+    "electron": "^27.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-icon-builder": "^2.0.1"
   },
   "dependencies": {
     "axios": "^1.6.0"
+  },
+  "build": {
+    "appId": "com.quilix.imagegenerator",
+    "productName": "Image Generator",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!*.log",
+      "!create-icon.js",
+      "!icon.svg"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }

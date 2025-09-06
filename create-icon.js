@@ -1,0 +1,22 @@
+const fs = require('fs');
+
+// Створюємо простий SVG іконку
+const svgIcon = `
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="32" fill="url(#grad1)"/>
+  <rect x="32" y="32" width="192" height="192" rx="16" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="128" cy="100" r="24" fill="rgba(255,255,255,0.8)"/>
+  <rect x="80" y="140" width="96" height="8" rx="4" fill="rgba(255,255,255,0.8)"/>
+  <rect x="80" y="160" width="64" height="8" rx="4" fill="rgba(255,255,255,0.6)"/>
+  <rect x="80" y="180" width="80" height="8" rx="4" fill="rgba(255,255,255,0.6)"/>
+</svg>
+`;
+
+fs.writeFileSync('icon.svg', svgIcon);
+console.log('SVG іконка створена!');
