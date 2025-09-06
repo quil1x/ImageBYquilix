@@ -1,11 +1,11 @@
 # Генератор Зображень
 
-[![English](https://img.shields.io/badge/English-🇺🇸-blue)](README.md)
+[![English](https://img.shields.io/badge/English-🇬🇧-blue)](README.md)
 [![Українська](https://img.shields.io/badge/Українська-🇺🇦-yellow)](README.uk.md)
 
 Десктопний додаток для генерації зображень з використанням Pollinations.AI API.
 
-**Створено Quilix** | [GitHub Репозиторій](https://github.com/quil1x/image-generator)
+**Створено Quilix** | [GitHub Репозиторій](https://github.com/quil1x/ImageBYquilix)
 
 ## Можливості
 

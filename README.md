@@ -1,11 +1,11 @@
 # Image Generator
 
-[![English](https://img.shields.io/badge/English-🇺🇸-blue)](README.md)
+[![English](https://img.shields.io/badge/English-🇬🇧-blue)](README.md)
 [![Українська](https://img.shields.io/badge/Українська-🇺🇦-yellow)](README.uk.md)
 
 Desktop application for generating images using Pollinations.AI API.
 
-**Created by Quilix** | [GitHub Repository](https://github.com/quil1x/image-generator)
+**Created by Quilix** | [GitHub Repository](https://github.com/quil1x/ImageBYquilix)
 
 ## Features
 
