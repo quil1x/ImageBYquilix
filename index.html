@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator - Pollinations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Основний контент -->
+        <main class="main-content">
+            <!-- Ліва панель - налаштування -->
+            <div class="left-panel">
+                <div class="panel-card">
+                    <h2>Settings</h2>
+                    
+                    <!-- Поле для промпту -->
+                    <div class="input-group">
+                        <label for="prompt">Prompt:</label>
+                        <textarea 
+                            id="prompt" 
+                            placeholder="Enter image description..."
+                            rows="4"
+                        ></textarea>
+                    </div>
+
+                    <!-- Налаштування моделі -->
+                    <div class="input-group">
+                        <label for="model">Model:</label>
+                        <select id="model">
+                            <option value="flux">Flux</option>
+                            <option value="turbo">Turbo</option>
+                            <option value="midjourney">Midjourney</option>
+                        </select>
+                    </div>
+
+                    <!-- Приховані налаштування -->
+                    <input type="hidden" id="size" value="1024x1024">
+                    <input type="hidden" id="seed" value="">
+                    <input type="hidden" id="enhance" value="false">
+                    <input type="hidden" id="nologo" value="true">
+
+                    <!-- Кнопки -->
+                    <div class="button-group">
+                        <button id="generateBtn" class="btn btn-primary">
+                            Generate
+                        </button>
+                        <button id="saveBtn" class="btn btn-secondary" disabled>
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Права панель - перегляд зображення -->
+            <div class="right-panel">
+                <div class="panel-card">
+                    <h2>Preview</h2>
+                    
+                    <div class="image-container" id="imageContainer">
+                        <div class="placeholder">
+                            <div class="placeholder-icon">[IMG]</div>
+                            <p>Image will appear here</p>
+                        </div>
+                    </div>
+
+                    <!-- Прогрес бар -->
+                    <div class="progress-container" id="progressContainer" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">Генерується зображення...</p>
+                    </div>
+
+                    <!-- Статус -->
+                    <div class="status-container">
+                        <div class="status-indicator" id="statusIndicator"></div>
+                        <span class="status-text" id="statusText">Готовий до генерації</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Логи -->
+        <div class="logs-panel" id="logsPanel">
+            <div class="logs-header">
+                <h3>Logs</h3>
+                <div class="logs-buttons">
+                    <button id="clearLogs" class="btn btn-small">Clear</button>
+                    <button id="toggleLogs" class="btn btn-small">Hide</button>
+                </div>
+            </div>
+            <div class="logs-content" id="logsContent">
+                <div class="log-entry">Application started</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
