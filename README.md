@@ -67,4 +67,3 @@ Apache License 2.0 - see LICENSE file for details.
 
 - **Created by**: [@quil1x](https://github.com/quil1x)
 - **Powered by**: [Pollinations.AI](https://pollinations.ai)
-- **Repository**: [GitHub](https://github.com/quil1x/image-generator)
