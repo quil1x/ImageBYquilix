@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор зображень від Quilix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+
+            <div class="settings-panel">
+                <div class="setting-group">
+                    <label for="langSelect" data-lang="language">Мова</label>
+                    <select id="langSelect" class="lang-select">
+                        <option value="uk">UA - Українська</option>
+                        <option value="en">EN - English</option>
+                        <option value="ru">RU - Русский</option>
+                        <option value="de">DE - Deutsch</option>
+                        <option value="fr">FR - Français</option>
+                        <option value="es">ES - Español</option>
+                        <option value="it">IT - Italiano</option>
+                        <option value="pl">PL - Polski</option>
+                        <option value="pt">PT - Português</option>
+                        <option value="ja">JA - 日本語</option>
+                        <option value="ko">KO - 한국어</option>
+                        <option value="zh">ZH - 中文</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="prompt" data-lang="prompt">Промпт</label>
+                    <textarea id="prompt" placeholder="Опишіть ваше зображення..." data-lang-placeholder="prompt_placeholder"></textarea>
+                </div>
+
+                <div class="setting-group">
+                    <label for="preset" data-lang="style_presets">Пресети стилів</label>
+                    <select id="preset">
+                        <option value="custom" data-lang="custom">Custom</option>
+                        <option value="photorealistic" data-lang="photorealistic">Photorealistic</option>
+                        <option value="anime-tnk" data-lang="anime-tnk">Anime (High School DxD / TNK style)</option>
+                        <option value="anime-passione" data-lang="anime-passione">Anime (Passione style, modern)</option>
+                        <option value="artistic" data-lang="artistic">Artistic</option>
+                        <option value="cartoon" data-lang="cartoon">Cartoon</option>
+                        <option value="fantasy" data-lang="fantasy">Fantasy</option>
+                        <option value="sci-fi" data-lang="sci-fi">Sci-Fi</option>
+                        <option value="portrait" data-lang="portrait">Portrait</option>
+                        <option value="landscape" data-lang="landscape">Landscape</option>
+                        <option value="abstract" data-lang="abstract">Abstract</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="model" data-lang="model">Модель</label>
+                    <select id="model">
+                        <option value="flux" selected>Flux (Recommended)</option>
+                        <option value="turbo">Turbo</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label data-lang="image_size">Розмір зображення</label>
+                    <div class="size-controls">
+                        <div class="size-input-group">
+                            <label for="width" data-lang="width">Ширина</label>
+                            <input type="range" id="width" min="256" max="2048" value="1024" step="64">
+                            <span id="widthValue">1024</span>
+                        </div>
+                        <div class="size-input-group">
+                            <label for="height" data-lang="height">Висота</label>
+                            <input type="range" id="height" min="256" max="2048" value="1024" step="64">
+                            <span id="heightValue">1024</span>
+                        </div>
+                        <div class="size-presets">
+                            <button type="button" class="size-preset-btn" data-size="512x512">1:1</button>
+                            <button type="button" class="size-preset-btn" data-size="1024x1024">1:1 HD</button>
+                            <button type="button" class="size-preset-btn" data-size="1024x768">4:3</button>
+                            <button type="button" class="size-preset-btn" data-size="768x1024">3:4</button>
+                            <button type="button" class="size-preset-btn" data-size="1280x720">16:9</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="count" data-lang="number_of_images">Кількість зображень</label>
+                    <select id="count">
+                        <option value="1" selected data-lang="1_image">1 зображення</option>
+                        <option value="2" data-lang="2_images">2 зображення</option>
+                        <option value="3" data-lang="3_images">3 зображення</option>
+                        <option value="4" data-lang="4_images">4 зображення</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="seed" data-lang="seed">Seed (насіння) - опціонально</label>
+                    <input type="number" id="seed" placeholder="Залиште порожнім для випадкового" data-lang-placeholder="seed_placeholder">
+                </div>
+
+                <div class="setting-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="enhance" value="true">
+                        <span class="checkmark"></span>
+                        <span data-lang="enhance_image">Покращити якість зображення</span>
+                    </label>
+                </div>
+
+                <div class="setting-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="nologo" value="true" checked>
+                        <span class="checkmark"></span>
+                        <span data-lang="no_logo">Без логотипу Pollinations</span>
+                    </label>
+                </div>
+
+                <button id="generateBtn" class="generate-btn">
+                    <span class="btn-icon">⚡</span>
+                    <span data-lang="generate">Генерувати</span>
+                </button>
+            </div>
+
+            <div class="preview-panel">
+                <div class="preview-header">
+                    <span data-lang="preview">Попередній перегляд</span>
+                    <button id="saveBtn" class="save-btn" disabled>
+                        <span class="btn-icon">💾</span>
+                        <span data-lang="save">Зберегти</span>
+                    </button>
+                </div>
+                <div id="preview" class="preview-area">
+                    <div id="imageContainer" class="image-container">
+                        <div class="preview-placeholder">
+                            <span class="placeholder-icon">🖼️</span>
+                            <span data-lang="preview_placeholder">Ваше згенероване зображення з'явиться тут</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logs-panel">
+                <div class="logs-header">
+                    <span data-lang="logs">Логи</span>
+                    <div class="logs-controls">
+                        <button id="clearLogsBtn" class="clear-btn">
+                            <span class="btn-icon">🗑️</span>
+                            <span data-lang="clear">Очистити</span>
+                        </button>
+                        <button id="toggleLogsBtn" class="toggle-btn">
+                            <span class="btn-icon">👁️</span>
+                            <span data-lang="hide">Сховати</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="logs" class="logs-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
